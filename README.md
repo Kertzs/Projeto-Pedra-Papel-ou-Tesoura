@@ -1,1 +1,2 @@
-# Projeto-Pedra-Papel-ou-Tesoura
+# Projeto-Pedra-Papel-ou-Tesoura 
+Afonso Estrela
