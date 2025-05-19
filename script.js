@@ -10,12 +10,14 @@ function getComputerChoice() {
         return "rock";
     }
 }
+
 //escolha do jogador
 function getHumanChoice(){
-    let humanChoice = prompt();
+    let humanChoice = prompt("Enter your choice: rock, paper, or scissors");
     return humanChoice.toLowerCase();
     
 }
+
 //as variaveis da pontuação
 let humanScore = 0;
 let computerScore = 0;
@@ -54,47 +56,53 @@ function playRound(getHumanChoice, getComputerChoice){
     humanScore += 0;
     computerScore += 1;
  }
- //para mostrar o resoltado do jogo no final
+
+ //para mostrar o resultado do jogo no final
  updateScoreDisplay();
 }
+
 //a função que inicia o jogo
 function playGame() {
     for (let i = 0; i < 5; i++) {
         playRound(getHumanChoice, getComputerChoice);
     }
     if (humanScore > computerScore) {
-        endDiv.textContent = ("You win!");
+        EndDiv.textContent = ("Winner: Human!");
     } else if (computerScore > humanScore) {
-        endDiv.textContent = ("You lost!");
+        EndDiv.textContent = ("Winner: Computer!");
     } else {
-        endDiv.textContent = ("You tied!");
+        EndDiv.textContent = ("Winner: Draw!");
     }
 }
+
 //o botão que ativa a função para iniciar o jogo
 document.addEventListener('DOMContentLoaded', function() {
-    const button = document.getElementById('gameButton');
+    const button = document.getElementById("gameButton");
     if (button) {
         button.addEventListener('click', function() {
             playGame(playGame);
         });
     }
 });
-//a div criada para mostrar o resultado do jogo
-const newDiv = document.createElement('div');
-newDiv.id = 'myDiv';
-newDiv.className = 'container';
-newDiv.textContent = `Human: ${humanScore}  Computer: ${computerScore}`;
 
-document.body.appendChild(newDiv);
+//a div criada para mostrar o resultado do jogo
+const UptScoreDiv = document.createElement('div');
+UptScoreDiv.id = 'uptScoreDiv';
+UptScoreDiv.className = 'uptScoreContainer';
+UptScoreDiv.textContent = `Human: ${humanScore}  Computer: ${computerScore}`;
+document.body.appendChild(UptScoreDiv);
+
 //a função que atualiza a pontuação para aparecer na div
 function updateScoreDisplay() {
-    const scoreDiv = document.getElementById('myDiv');
-    if (scoreDiv) {
-        scoreDiv.textContent = `Human: ${humanScore}  Computer: ${computerScore}`;
+    const ScoreDiv = document.getElementById('uptScoreDiv');
+    if (ScoreDiv) {
+        ScoreDiv.textContent = `Human: ${humanScore}  Computer: ${computerScore}`;
     }
 }
+
 //a div criada para mostrar quem perdeu ou ganhou
-const endDiv = document.createElement('div');
-endDiv.id = 'endDiv';
-endDiv.className = 'container';
-document.body.appendChild(endDiv);
+const EndDiv = document.createElement('div');
+EndDiv.id = 'endDiv';
+EndDiv.className = 'endContainer';
+EndDiv.textContent = "Winner: ";
+document.body.appendChild(EndDiv);
